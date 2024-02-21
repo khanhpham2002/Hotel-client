@@ -145,7 +145,7 @@ const ExistingRooms = () => {
                         </table>
                         <RoomPaginator
                             currentPage={currentPage}
-                            totalPags={calculateTotalPages(filteredRooms, roomsPerPage, rooms)}
+                            totalPages={calculateTotalPages(filteredRooms, roomsPerPage, rooms)}
                             onPageChange={handlePaginationClick}
                         />
 

@@ -13,7 +13,7 @@ const BookingForm = () => {
 	const [errorMessage, setErrorMessage] = useState("")
 	const [roomPrice, setRoomPrice] = useState(0)
 
-const currentUser = localStorage.getItem("userId")
+	const currentUser = localStorage.getItem("userId")
 
 	const [booking, setBooking] = useState({
 		guestFullName: "",
@@ -51,6 +51,7 @@ const currentUser = localStorage.getItem("userId")
 		const checkInDate = moment(booking.checkInDate)
 		const checkOutDate = moment(booking.checkOutDate)
 		const diffInDays = checkOutDate.diff(checkInDate, "days")
+		console.log(diffInDays)
 		const paymentPerDay = roomPrice ? roomPrice : 0
 		return diffInDays * paymentPerDay
 	}
@@ -74,6 +75,7 @@ const currentUser = localStorage.getItem("userId")
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
+		console.log(e.currentTarget)
 		const form = e.currentTarget
 		if (form.checkValidity() === false || !isGuestCountValid() || !isCheckOutDateValid()) {
 			e.stopPropagation()
@@ -85,6 +87,7 @@ const currentUser = localStorage.getItem("userId")
 
 	const handleFormSubmit = async () => {
 		try {
+			console.log(booking)
 			const confirmationCode = await bookRoom(roomId, booking)
 			setIsSubmitted(true)
 			navigate("/booking-success", { state: { message: confirmationCode } })

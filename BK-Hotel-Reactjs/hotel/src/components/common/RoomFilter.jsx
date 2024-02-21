@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-const RoomFilter = ({data, setFilteredData}) => {
-    const[filter, setFilter] = useState("")
+const RoomFilter = ({ data, setFilteredData }) => {
+    const [filter, setFilter] = useState("")
 
-    const handeleSelectChange = (e) =>{
+    const handeleSelectChange = (e) => {
         const selectedRoomType = e.target.value
         setFilter(selectedRoomType)
         const filteredRooms = data.filter((room) => room.roomType.toLowerCase().includes(selectedRoomType.toLowerCase()))
@@ -14,15 +14,15 @@ const RoomFilter = ({data, setFilteredData}) => {
         setFilteredData(data)
     }
     const roomTypes = ["", ...new Set(data.map((room) => room.roomType))]
-    return(
+    return (
         <div className="input-group mb-3">
-            <span className="input-group-text" id="room-type-filter"> 
+            <span className="input-group-text" id="room-type-filter">
                 Filter room by type
             </span>
             <select
-            className="form-select" 
-            value={filter}
-            onChange={handeleSelectChange}>
+                className="form-select"
+                value={filter}
+                onChange={handeleSelectChange}>
                 <option value={""}>select a room type to filter...</option>
                 {roomTypes.map((type, index) => (
                     <option key={index} value={String(type)}>

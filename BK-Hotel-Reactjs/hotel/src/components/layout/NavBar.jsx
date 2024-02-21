@@ -71,7 +71,6 @@ const NavBar = () => {
                                 {" "}
                                 Account
                             </a>
-
                             <ul
                                 className={`dropdown-menu ${showAccount ? "show" : ""}`}
                                 aria-labelledby="navbarDropdown">
